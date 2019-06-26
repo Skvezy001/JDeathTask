@@ -1,6 +1,6 @@
-package daoTests;
+package dao;
 
-import daoTests.daoImpl.AccountDaoImpl;
+import dao.daoImpl.AccountDaoImpl;
 import org.junit.After;
 import static org.junit.Assert.*;
 import org.junit.Before;

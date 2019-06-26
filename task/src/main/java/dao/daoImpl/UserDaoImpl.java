@@ -1,27 +1,27 @@
-package daoTests.daoImpl;
+package dao.daoImpl;
 
-import daoTests.AccountDao;
+import dao.UserDao;
 import dbLogic.DBConnect;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class AccountDaoImpl implements AccountDao {
+public class UserDaoImpl implements UserDao {
 
     private PreparedStatement preparedStatement;
     private ResultSet resultSet;
 
     @Override
-    public String getAllAccounts() throws SQLException {
+    public String getUserById(String id) throws SQLException{
+
         String str = "";
+
         DBConnect dbConnect = new DBConnect();
         dbConnect.getConnect();
-        preparedStatement = dbConnect.getConnection().prepareStatement("select * from account");
+        preparedStatement = dbConnect.getConnection().prepareStatement("select * from users where id = " + id);
         resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
-            str += resultSet.getInt("id") + ":" + resultSet.getInt("account") +
-                    ":" + resultSet.getInt("userid") + "  |  ";
+            str += resultSet.getString("name") + " " + resultSet.getString("sureName");
         }
         dbConnect.closeConnect(preparedStatement);
         return str;

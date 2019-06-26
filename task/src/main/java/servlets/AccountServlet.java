@@ -1,7 +1,7 @@
 package servlets;
 
-import daoTests.AccountDao;
-import daoTests.daoImpl.AccountDaoImpl;
+import dao.AccountDao;
+import dao.daoImpl.AccountDaoImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

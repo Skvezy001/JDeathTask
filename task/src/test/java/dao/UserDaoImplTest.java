@@ -1,6 +1,6 @@
-package daoTests;
+package dao;
 
-import daoTests.daoImpl.UserDaoImpl;
+import dao.daoImpl.UserDaoImpl;
 import org.junit.*;
 import static org.junit.Assert.*;
 import java.sql.SQLException;

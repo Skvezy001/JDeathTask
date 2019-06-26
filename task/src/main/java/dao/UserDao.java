@@ -1,4 +1,4 @@
-package daoTests;
+package dao;
 
 import java.sql.SQLException;
 
