@@ -1,8 +1,13 @@
-package dbLogic;
+package controller.dbLogic;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 
 public class DBConnect {
+
     private static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
     private static final String DATABASE_URL = "jdbc:mysql://localhost/taskdb" +
             "?verifyServerCertificate=false"+

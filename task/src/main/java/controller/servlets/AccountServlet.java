@@ -1,7 +1,8 @@
-package servlets;
+package controller.servlets;
 
-import dao.UserDao;
-import dao.daoImpl.UserDaoImpl;
+import controller.dao.AccountDao;
+import controller.dao.daoImpl.AccountDaoImpl;
+import model.Account;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,33 +12,27 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-
-@WebServlet("/userById")
-public class UserServlet extends HttpServlet {
+@WebServlet("/accounts")
+public class AccountServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-
-        UserDao userDao = new UserDaoImpl();
-        String string = "Null";
+        AccountDao accountDao = new AccountDaoImpl();
+        Account account = new Account();
         try{
-            string = userDao.getUserById(req.getParameter("id"));
+             account = accountDao.getAllAccounts();
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
+
         resp.getWriter().write("<html>"+
                 "<body>" +
                 "<h2>Hello JDeath!</h2>" +
-                "<form action='/userById' method='get'>" +
-                "<input type='text' name='id'/> </br></br>" +
-                "<input type='submit'></br></br>" +
-                string +
-                "</form>" +
+                account.accountsToString() +
                 "</body>" +
                 "</html>"
         );
     }
-
 }

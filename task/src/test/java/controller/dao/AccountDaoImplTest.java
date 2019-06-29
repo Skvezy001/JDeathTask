@@ -1,6 +1,7 @@
-package dao;
+package controller.dao;
 
-import dao.daoImpl.AccountDaoImpl;
+
+import controller.dao.daoImpl.AccountDaoImpl;
 import org.junit.After;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -23,6 +24,10 @@ public class AccountDaoImplTest {
 
     @Test
     public void getAllAccountTest() throws SQLException {
-        assertEquals("1:12345:1  |  2:12346:2  |  3:12347:3  |  4:12348:4  |  ", accountDao.getAllAccounts());
+        assertEquals("id:  1 | Account number:  12345 | User id: 1</br>" +
+                "id:  2 | Account number:  12346 | User id: 2</br>" +
+                "id:  3 | Account number:  12347 | User id: 3</br>" +
+                "id:  4 | Account number:  12348 | User id: 4</br>",
+                accountDao.getAllAccounts().accountsToString());
     }
 }

@@ -1,7 +1,8 @@
-package dao.daoImpl;
+package controller.dao.daoImpl;
 
-import dao.AccountDao;
-import dbLogic.DBConnect;
+import controller.dao.AccountDao;
+import controller.dbLogic.DBConnect;
+import model.Account;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,17 +14,17 @@ public class AccountDaoImpl implements AccountDao {
     private ResultSet resultSet;
 
     @Override
-    public String getAllAccounts() throws SQLException {
-        String str = "";
+    public Account getAllAccounts() throws SQLException {
         DBConnect dbConnect = new DBConnect();
         dbConnect.getConnect();
+
         preparedStatement = dbConnect.getConnection().prepareStatement("select * from account");
         resultSet = preparedStatement.executeQuery();
-        while (resultSet.next()) {
-            str += resultSet.getInt("id") + ":" + resultSet.getInt("account") +
-                    ":" + resultSet.getInt("userid") + "  |  ";
-        }
+
+        Account account = new Account(resultSet);
+
         dbConnect.closeConnect(preparedStatement);
-        return str;
+
+        return account;
     }
 }

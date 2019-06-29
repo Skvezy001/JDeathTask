@@ -1,6 +1,6 @@
-package dao;
+package controller.dao;
 
-import dao.daoImpl.UserDaoImpl;
+import controller.dao.daoImpl.UserDaoImpl;
 import org.junit.*;
 import static org.junit.Assert.*;
 import java.sql.SQLException;
@@ -21,7 +21,8 @@ public class UserDaoImplTest {
 
     @Test
     public void getUserByIdTest() throws SQLException{
-        assertEquals("Nikita Ershov", userDao.getUserById("1"));
+        assertEquals("Nikita Ershov", userDao.getUserById("1").getName() + " "
+                + userDao.getUserById("1").getSureName());
     }
 
 }
